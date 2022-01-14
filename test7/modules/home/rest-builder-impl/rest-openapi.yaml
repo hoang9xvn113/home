@@ -1,0 +1,577 @@
+components:
+    responses:
+        # Descriptions of common responses
+        BadRequestException:
+            description: Request body not meet require
+            content:
+                application/json:
+                    schema:
+                        $ref: "#/components/schemas/Error"
+                application/xml:
+                    schema:
+                        $ref: "#/components/schemas/Error"
+        NotAuthorizedException:
+            description: Authentication failure
+            content:
+                application/json:
+                    schema:
+                        $ref: "#/components/schemas/Error"
+                application/xml:
+                    schema:
+                        $ref: "#/components/schemas/Error"
+        ForbiddenException:
+            description: Not permitted to access
+            content:
+                application/json:
+                    schema:
+                        $ref: "#/components/schemas/Error"
+                application/xml:
+                    schema:
+                        $ref: "#/components/schemas/Error"
+        NotFoundException:
+            description: The specified resource was not found
+            content:
+                application/json:
+                    schema:
+                        $ref: "#/components/schemas/Error"
+                application/xml:
+                    schema:
+                        $ref: "#/components/schemas/Error"
+        NotAllowedException:
+            description: HTTP method not supported
+            content:
+                application/json:
+                    schema:
+                        $ref: "#/components/schemas/Error"
+                application/xml:
+                    schema:
+                        $ref: "#/components/schemas/Error"
+        NotAcceptableException:
+            description: Client media type requested not supported
+            content:
+                application/json:
+                    schema:
+                        $ref: "#/components/schemas/Error"
+                application/xml:
+                    schema:
+                        $ref: "#/components/schemas/Error"
+        NotSupportedException:
+            description: Client posted media type not supported
+            content:
+                application/json:
+                    schema:
+                        $ref: "#/components/schemas/Error"
+                application/xml:
+                    schema:
+                        $ref: "#/components/schemas/Error"
+        InternalServerErrorException:
+            description: Internal Server Error
+            content:
+                application/json:
+                    schema:
+                        $ref: "#/components/schemas/Error"
+                application/xml:
+                    schema:
+                        $ref: "#/components/schemas/Error"
+        ServiceUnavailableException:
+            description: Server is temporarily unavailable or busy
+            content:
+                application/json:
+                    schema:
+                        $ref: "#/components/schemas/Error"
+                application/xml:
+                    schema:
+                        $ref: "#/components/schemas/Error"
+    schemas:
+        Department:
+            description: A very simple department
+            properties:
+                id:
+                    description: The department ID.
+                    type: integer
+                    format: int64
+                name:
+                    description: The department Name.
+                    type: string
+                    nullable: true
+
+                code:
+                    description: The department Code.
+                    type: string
+                    nullable: true
+
+                parentId:
+                    description: The department ParentId.
+                    type: integer
+                    format: int64
+                    nullable: true
+
+                businessName:
+                    description: The department business name.
+                    type: string
+                    nullable: true
+
+                ord:
+                    description: The department Ord.
+                    type: integer
+                    nullable: true
+
+                typeName:
+                    description: The department Type name.
+                    type: string
+                    nullable: true
+
+                type:
+                    description: The department Type.
+                    type: string
+                    nullable: true
+
+                tax:
+                    description: The department tax.
+                    type: string
+                    nullable: true
+
+                address:
+                    description: The department address.
+                    type: string
+                    nullable: true
+
+                headOffice:
+                    description: The department headOffice.
+                    type: string
+                    nullable: true
+
+                alias:
+                    description: The department alias.
+                    type: string
+                    nullable: true
+
+                description:
+                    type: string
+                    nullable: true
+
+
+
+
+            type: object
+
+        TreeDepartment:
+            description: A very simple department
+            properties:
+                id:
+                    description: The department ID.
+                    type: integer
+                    format: int64
+                name:
+                    description: The department Name.
+                    type: string
+
+                code:
+                    description: The department Code.
+                    type: string
+
+                parentId:
+                    description: The department ParentId.
+                    type: integer
+                    format: int64
+
+                businessName:
+                    description: The department business name.
+                    type: string
+
+                ord:
+                    description: The department Ord.
+                    type: integer
+
+                typeName:
+                    description: The department Type name.
+                    type: string
+
+                type:
+                    description: The department Type.
+                    type: string
+
+                tax:
+                    description: The department tax.
+                    type: string
+
+                address:
+                    description: The department address.
+                    type: string
+
+                headOffice:
+                    description: The department headOffice.
+                    type: string
+
+                alias:
+                    description: The department alias.
+                    type: string
+                description:
+                    type: string
+                treeDepartments:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/TreeDepartment'
+                    nullable: true
+            type: object
+        Error:
+            type: object
+            properties:
+                status:
+                    format: int64
+                    readOnly: true
+                    type: integer
+                    example: 401
+                code:
+                    type: string
+                    example: DOGOO-100
+                message:
+                    type: string
+                developerMessage:
+                    type: string
+            required:
+                - code
+                - message
+info:
+    description: "DemoRestBuilder REST API"
+    license:
+        name: "Apache 2.0"
+        url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+    title: "DemoRestBuilder"
+    version: v1.0
+openapi: 3.0.1
+paths:
+    "/departments/{departmentId}":
+        get:
+            operationId: getDepartment
+            summary: Get department by ID
+            parameters:
+                - in: path
+                  name: departmentId
+                  description: Department ID
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+            responses:
+                200:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Department"
+                        application/xml:
+                            schema:
+                                $ref: "#/components/schemas/Department"
+                    description: ""
+                400:
+                    $ref: "#/components/responses/BadRequestException"
+                401:
+                    $ref: "#/components/responses/NotAuthorizedException"
+                403:
+                    $ref: "#/components/responses/ForbiddenException"
+                404:
+                    $ref: "#/components/responses/NotFoundException"
+                405:
+                    $ref: "#/components/responses/NotAllowedException"
+                406:
+                    $ref: "#/components/responses/NotAcceptableException"
+                415:
+                    $ref: "#/components/responses/NotSupportedException"
+                500:
+                    $ref: "#/components/responses/InternalServerErrorException"
+                503:
+                    $ref: "#/components/responses/ServiceUnavailableException"
+            tags: [ "Department" ]
+
+        delete:
+            operationId: deleteDepartment
+            summary: Delete department by ID
+            parameters:
+                - in: path
+                  name: departmentId
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+            responses:
+                204:
+                    content:
+                        application/json: { }
+                        application/xml: { }
+                    description: ""
+                400:
+                    $ref: "#/components/responses/BadRequestException"
+                401:
+                    $ref: "#/components/responses/NotAuthorizedException"
+                403:
+                    $ref: "#/components/responses/ForbiddenException"
+                404:
+                    $ref: "#/components/responses/NotFoundException"
+                405:
+                    $ref: "#/components/responses/NotAllowedException"
+                406:
+                    $ref: "#/components/responses/NotAcceptableException"
+                415:
+                    $ref: "#/components/responses/NotSupportedException"
+                500:
+                    $ref: "#/components/responses/InternalServerErrorException"
+                503:
+                    $ref: "#/components/responses/ServiceUnavailableException"
+            tags: [ "Department" ]
+        put:
+            operationId: putDepartment
+            summary: Update department by ID
+            parameters:
+                - in: path
+                  name: departmentId
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/Department"
+                    application/xml:
+                        schema:
+                            $ref: "#/components/schemas/Department"
+            responses:
+                200:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Department"
+                        application/xml:
+                            schema:
+                                $ref: "#/components/schemas/Department"
+                    description: ""
+                400:
+                    $ref: "#/components/responses/BadRequestException"
+                401:
+                    $ref: "#/components/responses/NotAuthorizedException"
+                403:
+                    $ref: "#/components/responses/ForbiddenException"
+                404:
+                    $ref: "#/components/responses/NotFoundException"
+                405:
+                    $ref: "#/components/responses/NotAllowedException"
+                406:
+                    $ref: "#/components/responses/NotAcceptableException"
+                415:
+                    $ref: "#/components/responses/NotSupportedException"
+                500:
+                    $ref: "#/components/responses/InternalServerErrorException"
+                503:
+                    $ref: "#/components/responses/ServiceUnavailableException"
+            tags: [ "Department" ]
+        patch:
+            operationId: patchDepartment
+            summary: Update properties department by ID
+            parameters:
+                - in: path
+                  name: departmentId
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/Department"
+                    application/xml:
+                        schema:
+                            $ref: "#/components/schemas/Department"
+            responses:
+                200:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Department"
+                        application/xml:
+                            schema:
+                                $ref: "#/components/schemas/Department"
+                    description: ""
+                400:
+                    $ref: "#/components/responses/BadRequestException"
+                401:
+                    $ref: "#/components/responses/NotAuthorizedException"
+                403:
+                    $ref: "#/components/responses/ForbiddenException"
+                404:
+                    $ref: "#/components/responses/NotFoundException"
+                405:
+                    $ref: "#/components/responses/NotAllowedException"
+                406:
+                    $ref: "#/components/responses/NotAcceptableException"
+                415:
+                    $ref: "#/components/responses/NotSupportedException"
+                500:
+                    $ref: "#/components/responses/InternalServerErrorException"
+                503:
+                    $ref: "#/components/responses/ServiceUnavailableException"
+            tags: [ "Department" ]
+
+
+    "/tree-departments":
+        get:
+            operationId: getTreeDepartments
+            summary: Get Tree departments
+            description: Retrieves the departments. Results can be paginated, filtered, searched, and sorted.
+            tags: [ "TreeDepartment" ]
+            parameters:
+                - in: query
+                  name: filter
+                  schema:
+                      type: string
+                - in: query
+                  name: page
+                  schema:
+                      type: integer
+                - in: query
+                  name: pageSize
+                  schema:
+                      type: integer
+                - in: query
+                  name: search
+                  schema:
+                      type: string
+                - in: query
+                  name: sort
+                  schema:
+                      type: string
+            responses:
+                200:
+                    description: A paged array of departments
+                    content:
+                        application/json:
+                            schema:
+                                items:
+                                    $ref: "#/components/schemas/TreeDepartment"
+                                type: array
+                        application/xml:
+                            schema:
+                                items:
+                                    $ref: "#/components/schemas/TreeDepartment"
+                                type: array
+                400:
+                    $ref: "#/components/responses/BadRequestException"
+                401:
+                    $ref: "#/components/responses/NotAuthorizedException"
+                403:
+                    $ref: "#/components/responses/ForbiddenException"
+                404:
+                    $ref: "#/components/responses/NotFoundException"
+                405:
+                    $ref: "#/components/responses/NotAllowedException"
+                406:
+                    $ref: "#/components/responses/NotAcceptableException"
+                415:
+                    $ref: "#/components/responses/NotSupportedException"
+                500:
+                    $ref: "#/components/responses/InternalServerErrorException"
+                503:
+                    $ref: "#/components/responses/ServiceUnavailableException"
+
+
+    "/departments":
+        get:
+            operationId: getDepartments
+            summary: Get list department
+            description: Retrieves the departments. Results can be paginated, filtered, searched, and sorted.
+            tags: [ "Department" ]
+            parameters:
+                - in: query
+                  name: filter
+                  schema:
+                      type: string
+                - in: query
+                  name: page
+                  schema:
+                      type: integer
+                - in: query
+                  name: pageSize
+                  schema:
+                      type: integer
+                - in: query
+                  name: search
+                  schema:
+                      type: string
+                - in: query
+                  name: sort
+                  schema:
+                      type: string
+            responses:
+                200:
+                    description: A paged array of departments
+                    content:
+                        application/json:
+                            schema:
+                                items:
+                                    $ref: "#/components/schemas/Department"
+                                type: array
+                        application/xml:
+                            schema:
+                                items:
+                                    $ref: "#/components/schemas/Department"
+                                type: array
+                400:
+                    $ref: "#/components/responses/BadRequestException"
+                401:
+                    $ref: "#/components/responses/NotAuthorizedException"
+                403:
+                    $ref: "#/components/responses/ForbiddenException"
+                404:
+                    $ref: "#/components/responses/NotFoundException"
+                405:
+                    $ref: "#/components/responses/NotAllowedException"
+                406:
+                    $ref: "#/components/responses/NotAcceptableException"
+                415:
+                    $ref: "#/components/responses/NotSupportedException"
+                500:
+                    $ref: "#/components/responses/InternalServerErrorException"
+                503:
+                    $ref: "#/components/responses/ServiceUnavailableException"
+        post:
+            operationId: addDepartment
+            summary: Add new Department
+
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/Department"
+                    application/xml:
+                        schema:
+                            $ref: "#/components/schemas/Department"
+            responses:
+                200:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Department"
+                        application/xml:
+                            schema:
+                                $ref: "#/components/schemas/Department"
+                    description: ""
+                400:
+                    $ref: "#/components/responses/BadRequestException"
+                401:
+                    $ref: "#/components/responses/NotAuthorizedException"
+                403:
+                    $ref: "#/components/responses/ForbiddenException"
+                404:
+                    $ref: "#/components/responses/NotFoundException"
+                405:
+                    $ref: "#/components/responses/NotAllowedException"
+                406:
+                    $ref: "#/components/responses/NotAcceptableException"
+                415:
+                    $ref: "#/components/responses/NotSupportedException"
+                500:
+                    $ref: "#/components/responses/InternalServerErrorException"
+                503:
+                    $ref: "#/components/responses/ServiceUnavailableException"
+            tags: [ "Department" ]

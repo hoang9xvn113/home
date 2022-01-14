@@ -1,0 +1,10 @@
+Bundle-Name: poc-employee-api
+Bundle-SymbolicName: com.dogoo.poc.employee.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.dogoo.poc.employee.exception,\
+	com.dogoo.poc.employee.model,\
+	com.dogoo.poc.employee.service,\
+	com.dogoo.poc.employee.service.persistence
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../poc-employee-service/service.xml

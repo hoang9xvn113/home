@@ -1,0 +1,3 @@
+Bundle-Name: poc-home-rest-builder-client
+Bundle-SymbolicName: com.poc.home.client
+Bundle-Version: 1.0.0

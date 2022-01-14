@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="com.dogoo.poc.home.model.HomeEntry">
+		<field name="uuid" type="String" />
+		<field name="homeId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="address" type="String" />
+		<field name="floor" type="int" />
+		<field name="square" type="float" />
+		<field name="room" type="int" />
+		<field name="color" type="String" />
+		<field name="owner" type="String" />
+	</model>
+</model-hints>

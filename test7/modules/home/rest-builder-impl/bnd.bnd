@@ -1,0 +1,3 @@
+Bundle-Name: rest-builder-impl
+Bundle-SymbolicName: com.poc.home.rest.impl
+Bundle-Version: 1.0.0

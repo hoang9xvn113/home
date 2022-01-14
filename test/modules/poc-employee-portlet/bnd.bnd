@@ -1,0 +1,4 @@
+Bundle-Name: poc-employee-portlet
+Bundle-SymbolicName: com.dogoo.poc.employee
+Bundle-Version: 1.0.0
+Export-Package: com.dogoo.poc.employee.constants

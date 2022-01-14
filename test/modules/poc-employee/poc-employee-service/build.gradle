@@ -1,0 +1,11 @@
+dependencies {
+	compile project(":modules:poc-employee:poc-employee-api")
+
+	compileOnly group: "com.liferay.portal", name: "release.dxp.api"
+}
+
+buildService {
+	apiDir = "../poc-employee-api/src/main/java"
+}
+
+group = "com.dogoo.poc.employee"

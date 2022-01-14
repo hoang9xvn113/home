@@ -1,0 +1,15 @@
+subprojects {
+	configurations.all {
+		resolutionStrategy.force 'com.liferay:com.liferay.portal.vulcan.api:8.1.1'
+		resolutionStrategy.force group: "com.liferay.portal", name: "com.liferay.portal.test", version: "9.3.4"
+	}
+}
+
+
+tasks.withType(JavaCompile) {
+
+	// Generated classes using Jodd library are unable to be read when compiled against JDK 11
+
+	sourceCompatibility = JavaVersion.VERSION_1_8
+	targetCompatibility = JavaVersion.VERSION_1_8
+}

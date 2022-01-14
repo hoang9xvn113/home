@@ -1,0 +1,10 @@
+Bundle-Name: poc-home-service-builder-api
+Bundle-SymbolicName: com.poc.home.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.poc.home.exception,\
+	com.poc.home.model,\
+	com.poc.home.service,\
+	com.poc.home.service.persistence
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../poc-home-service-builder-service/service.xml

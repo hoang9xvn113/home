@@ -1,0 +1,10 @@
+Bundle-Name: home-api
+Bundle-SymbolicName: com.dogoo.poc.home.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.dogoo.poc.home.exception,\
+	com.dogoo.poc.home.model,\
+	com.dogoo.poc.home.service,\
+	com.dogoo.poc.home.service.persistence
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../home-service/service.xml

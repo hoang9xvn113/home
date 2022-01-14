@@ -1,0 +1,4 @@
+Bundle-Name: home-rest-test
+Bundle-SymbolicName: com.dogoo.poc.home.rest.test
+Bundle-Version: 1.0.0
+-includeresource: com.dogoo.poc.home.rest.client.jar=../home-rest-client/build/libs/com.dogoo.poc.home.rest.client-1.0.0.jar;lib:=true

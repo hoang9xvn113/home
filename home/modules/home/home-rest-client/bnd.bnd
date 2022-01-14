@@ -1,0 +1,3 @@
+Bundle-Name: home-rest-client
+Bundle-SymbolicName: com.dogoo.poc.home.rest.client
+Bundle-Version: 1.0.0

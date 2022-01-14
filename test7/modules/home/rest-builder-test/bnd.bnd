@@ -1,0 +1,4 @@
+Bundle-Name: rest-builder-test
+Bundle-SymbolicName: com.poc.home.rest.test
+Bundle-Version: 1.0.0
+-includeresource: com.poc.home.rest.client.jar=../rest-builder-client/build/libs/com.poc.home.rest.client-1.0.0.jar;lib:=true

@@ -1,0 +1,6 @@
+Bundle-Name: poc-home-rest-builder-api
+Bundle-SymbolicName: com.poc.home.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.poc.home.dto.v1_0,\
+	com.poc.home.resource.v1_0

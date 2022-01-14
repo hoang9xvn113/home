@@ -1,0 +1,6 @@
+Bundle-Name: home-rest-api
+Bundle-SymbolicName: com.dogoo.poc.home.rest.api
+Bundle-Version: 1.0.0
+Export-Package: \
+	com.dogoo.poc.home.rest.dto.v1_0_0,\
+    com.dogoo.poc.home.rest.resource.v1_0_0

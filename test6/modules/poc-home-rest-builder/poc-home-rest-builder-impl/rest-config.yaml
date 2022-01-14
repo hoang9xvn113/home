@@ -1,0 +1,9 @@
+apiDir: "../poc-home-rest-builder-api/src/main/java"
+apiPackagePath: "com.poc.home.rest"
+application:
+    baseURI: "/poc-home-rest-builder"
+    className: "PocHomeRestBuilderApplication"
+    name: "PocHomeRestBuilder"
+author: "hoang"
+clientDir: "../poc-home-rest-builder-client/src/main/java"
+testDir: "../poc-home-rest-builder-test/src/testIntegration/java"

@@ -1,0 +1,9 @@
+apiDir: "../home-rest-api/src/main/java"
+apiPackagePath: "com.dogoo.poc.home.rest"
+application:
+    baseURI: "/home-rest"
+    className: "HomeRestApplication"
+    name: "HomeRest"
+author: "hoang"
+clientDir: "../home-rest-client/src/main/java"
+testDir: "../home-rest-test/src/testIntegration/java"

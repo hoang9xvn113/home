@@ -1,0 +1,3 @@
+Bundle-Name: home-rest-impl
+Bundle-SymbolicName: com.dogoo.poc.home.rest.impl
+Bundle-Version: 1.0.0
